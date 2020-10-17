@@ -12,28 +12,48 @@ struct LineChartView: View {
     var geometry: GeometryProxy
     var history: [Int]
 
-    var body: some View {
-        Path { path in
-            let width = geometry.size.width
-            let lineHeight = geometry.size.height - 10.0
-            let total = history.count
-            if total == 0 {
-                return
-            }
+    fileprivate func drawPath(_ path: inout Path) {
+        let width = geometry.size.width - 5
+        let lineHeight = geometry.size.height - 10.0
+        let total = history.count
+        if total == 0 {
+            return
+        }
 
-            for i in 0...total-1 {
-                let value = history[i]
-                let point = CGPoint(
-                    x: Double(width) * (Double(i) / Double(total-1)),
-                    y: Double(lineHeight + 10.0) - Double(lineHeight) * (Double(value) / 100.0)
-                )
-                if i == 0 {
-                    path.move(to: point)
-                }
-                path.addLine(to: point)
-                path.move(to: point)
-            }
-        }.stroke(lineWidth: 3.0).fill(Color.blue)
+        path.move(to: CGPoint(x: 2.5, y: Double(geometry.size.height)))
+        for i in 0...total-1 {
+            let value = history[i]
+            let point = CGPoint(
+                x: 2.5 + Double(width) * (Double(i) / Double(total-1)),
+                y: Double(lineHeight + 10.0) - Double(lineHeight) * (Double(value) / 100.0)
+            )
+            path.addLine(to: point)
+            // path.move(to: point)
+        }
+        path.addLine(to: CGPoint(x: 2.5 + Double(width), y: Double(geometry.size.height)))
+        path.addLine(to: CGPoint(x: 2.5, y: Double(geometry.size.height)))
+        path.closeSubpath()
+    }
+
+    var body: some View {
+        ZStack {
+            Path { path in
+                drawPath(&path)
+            }.fill(
+                LinearGradient(
+                    gradient: Gradient(
+                        colors: [
+                            Color.blue.opacity(0.3),
+                            Color.blue.opacity(0.0),
+                        ]
+                    ),
+                    startPoint: .top,
+                    endPoint: .bottom
+            ))
+            Path { path in
+                drawPath(&path)
+            }.stroke(lineWidth: 1).fill(Color.blue.opacity(0.9))
+        }
     }
 }
 
@@ -64,20 +84,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(state: CPUThrottlingState(speedLimits: [
-            100,
-            100,
-            88,
-            90,
-            90,
-            100,
-            99,
-            100,
-            89,
-            50,
-            75,
-            75,
-            80,
-        ]))
+        ContentView(state: CPUThrottlingState(
+            speedLimits: (0..<100).map { _ in .random(in: 75...100) }
+        ))
     }
 }
