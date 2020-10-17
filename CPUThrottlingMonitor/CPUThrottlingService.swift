@@ -39,7 +39,7 @@ class CPUThrottlingService {
 
     func start() {
         for _ in 0...maxPoints-1 {
-            state.speedLimits.append(0)
+            state.speedLimits.append(100)
         }
         run()
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in
