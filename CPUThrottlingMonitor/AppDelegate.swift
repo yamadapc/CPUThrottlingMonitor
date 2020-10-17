@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = ContentView(state: cpuThrottlingService.state)
 
         popover = NSPopover()
-        popover.contentSize = NSSize(width: 360, height: 360)
+        popover.contentSize = NSSize(width: 360, height: 200)
         popover.contentViewController = NSHostingController(rootView: contentView)
 
         statusBarController = StatusBarController(

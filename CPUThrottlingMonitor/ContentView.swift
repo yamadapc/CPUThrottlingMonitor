@@ -15,7 +15,7 @@ struct LineChartView: View {
     var body: some View {
         Path { path in
             let width = geometry.size.width
-            let lineHeight = geometry.size.height - 20.0
+            let lineHeight = geometry.size.height - 10.0
             let total = history.count
             if total == 0 {
                 return
@@ -25,7 +25,7 @@ struct LineChartView: View {
                 let value = history[i]
                 let point = CGPoint(
                     x: Double(width) * (Double(i) / Double(total-1)),
-                    y: Double(lineHeight + 20.0) - Double(lineHeight) * (Double(value) / 100.0)
+                    y: Double(lineHeight + 10.0) - Double(lineHeight) * (Double(value) / 100.0)
                 )
                 if i == 0 {
                     path.move(to: point)
@@ -42,9 +42,6 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("CPU Throttling")
-                .bold()
-                .frame(maxWidth: .infinity, maxHeight: 50)
             VStack {
                 GeometryReader { geometry in
                     LineChartView(
@@ -53,13 +50,13 @@ struct ContentView: View {
                     )
                 }.background(Rectangle().foregroundColor(Color(NSColor.controlBackgroundColor)))
                     .border(SeparatorShapeStyle(), width: 2.0)
-            }.padding(20.0)
+            }.padding(10.0)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             HStack {
                 Button(action: {
                     NSApp.terminate(self)
-                }, label: { Text("Quit") }).padding(5).frame(alignment: .trailing)
-            }.frame(maxWidth: .infinity, maxHeight: 30, alignment: .trailing)
+                }, label: { Text("Quit") }).frame(alignment: .topTrailing)
+            }.padding(10).frame(maxWidth: .infinity, maxHeight: 30, alignment: .trailing)
         }
     }
 }
