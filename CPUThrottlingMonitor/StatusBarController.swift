@@ -24,8 +24,8 @@ class StatusBarController {
 
         if let statusBarButton = statusItem.button {
             statusBarButton.title = String(format: "therm %3d%%", cpuThrottlingService.getCurrentSpeedLimit())
-            // statusBarButton.action = #selector(togglePopover(sender:))
-            // statusBarButton.target = self
+            statusBarButton.action = #selector(togglePopover(sender:))
+            statusBarButton.target = self
         }
 
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in

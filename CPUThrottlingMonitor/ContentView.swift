@@ -8,16 +8,74 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LineChartView: View {
+    var geometry: GeometryProxy
+    var history: [Int]
+
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        Path { path in
+            let width = geometry.size.width
+            let lineHeight = geometry.size.height - 20.0
+            let total = history.count
+            if total == 0 {
+                return
+            }
+
+            for i in 0...total-1 {
+                let value = history[i]
+                let point = CGPoint(
+                    x: Double(width) * (Double(i) / Double(total-1)),
+                    y: Double(lineHeight + 20.0) - Double(lineHeight) * (Double(value) / 100.0)
+                )
+                if i == 0 {
+                    path.move(to: point)
+                }
+                path.addLine(to: point)
+                path.move(to: point)
+            }
+        }.stroke(lineWidth: 3.0).fill(Color.blue)
+    }
+}
+
+struct ContentView: View {
+    @ObservedObject var state = CPUThrottlingState()
+
+    var body: some View {
+        VStack {
+            Text("CPU Throttling")
+                .bold()
+                .frame(maxWidth: .infinity, maxHeight: 50)
+            VStack {
+                GeometryReader { geometry in
+                    LineChartView(
+                        geometry: geometry,
+                        history: self.state.getHistory()
+                    )
+                }.background(Rectangle().foregroundColor(Color(NSColor.controlBackgroundColor)))
+                    .border(SeparatorShapeStyle(), width: 2.0)
+            }.padding(20.0)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        }
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(state: CPUThrottlingState(speedLimits: [
+            100,
+            100,
+            88,
+            90,
+            90,
+            100,
+            99,
+            100,
+            89,
+            50,
+            75,
+            75,
+            80,
+        ]))
     }
 }

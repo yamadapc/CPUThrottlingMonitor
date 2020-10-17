@@ -9,14 +9,37 @@
 import Foundation
 import Cocoa
 
-class CPUThrottlingService {
-    var speedLimits: [Int] = []
+class CPUThrottlingState: ObservableObject {
+    @Published var speedLimits: [Int] = []
     var currentPosition = 0
-    var maxPoints = 120 // runs every 5s shows 10min
+
+    init() {}
+
+    init(speedLimits: [Int]) {
+        self.speedLimits = speedLimits
+    }
+
+    func getHistory() -> [Int] {
+        var history: [Int] = []
+        if speedLimits.count == 0 {
+            return []
+        }
+        for i in 0...speedLimits.count-1 {
+            let index = (currentPosition + i) % speedLimits.count
+            let value = speedLimits[index]
+            history.append(value)
+        }
+        return history
+    }
+}
+
+class CPUThrottlingService {
+    var state = CPUThrottlingState()
+    var maxPoints = 120
 
     func start() {
-        for _ in 0...maxPoints {
-            speedLimits.append(0)
+        for _ in 0...maxPoints-1 {
+            state.speedLimits.append(0)
         }
         run()
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in
@@ -25,19 +48,9 @@ class CPUThrottlingService {
     }
 
     func getCurrentSpeedLimit() -> Int {
-        let indexCandidate = (currentPosition - 1) % maxPoints
+        let indexCandidate = (state.currentPosition - 1) % maxPoints
         let index = indexCandidate >= 0 ? indexCandidate : maxPoints + indexCandidate
-        return speedLimits[index]
-    }
-
-    func getHistory() -> [Int] {
-        var history: [Int] = []
-        for i in 0...maxPoints {
-            let index = (currentPosition + i) % maxPoints
-            let value = speedLimits[index]
-            history.append(value)
-        }
-        return history
+        return state.speedLimits[index]
     }
 
     func run() {
@@ -61,9 +74,9 @@ class CPUThrottlingService {
                 .trimmingCharacters(in: CharacterSet.whitespaces)
             let speedLimitInt = Int(speedLimit ?? "100") ?? 100
 
-            speedLimits[currentPosition] = speedLimitInt
-            currentPosition += 1
-            currentPosition %= maxPoints
+            state.speedLimits[state.currentPosition] = speedLimitInt
+            state.currentPosition += 1
+            state.currentPosition %= maxPoints
         }
     }
 }

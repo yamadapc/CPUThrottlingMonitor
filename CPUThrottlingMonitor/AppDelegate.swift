@@ -12,7 +12,7 @@ import SwiftUI
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var cpuThrottlingService: CPUThrottlingService!
-    // var popover: NSPopover!
+    var popover: NSPopover!
     var statusBarController: StatusBarController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -20,13 +20,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cpuThrottlingService.start()
 
         // Create the SwiftUI view that provides the window contents.
-        // let contentView = ContentView()
+        let contentView = ContentView(state: cpuThrottlingService.state)
 
-        // popover = NSPopover()
-        // popover.contentSize = NSSize(width: 360, height: 360)
-        // popover.contentViewController = NSHostingController(rootView: contentView)
+        popover = NSPopover()
+        popover.contentSize = NSSize(width: 360, height: 360)
+        popover.contentViewController = NSHostingController(rootView: contentView)
 
-        statusBarController = StatusBarController(cpuThrottlingService: cpuThrottlingService, popover: nil)
+        statusBarController = StatusBarController(
+            cpuThrottlingService: cpuThrottlingService,
+            popover: popover
+        )
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

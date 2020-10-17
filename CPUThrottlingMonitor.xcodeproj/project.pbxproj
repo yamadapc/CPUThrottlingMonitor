@@ -96,6 +96,8 @@
 			dependencies = (
 			);
 			name = CPUThrottlingMonitor;
+			packageProductDependencies = (
+			);
 			productName = CPUThrottlingMonitor;
 			productReference = CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */;
 			productType = "com.apple.product-type.application";
@@ -124,6 +126,8 @@
 				Base,
 			);
 			mainGroup = CBBDED4B253AB3D200804BAE;
+			packageReferences = (
+			);
 			productRefGroup = CBBDED55253AB3D200804BAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
