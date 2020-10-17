@@ -55,6 +55,11 @@ struct ContentView: View {
                     .border(SeparatorShapeStyle(), width: 2.0)
             }.padding(20.0)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            HStack {
+                Button(action: {
+                    NSApp.terminate(self)
+                }, label: { Text("Quit") }).padding(5).frame(alignment: .trailing)
+            }.frame(maxWidth: .infinity, maxHeight: 30, alignment: .trailing)
         }
     }
 }
