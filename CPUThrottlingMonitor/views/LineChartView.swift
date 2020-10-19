@@ -61,7 +61,7 @@ struct LineChartView: View {
             Path { path in
                 drawPath(&path, drawEdges: true)
             }.stroke(lineWidth: 1).fill(Color.blue.opacity(0.9))
-        }
+        }.background(Rectangle().fill(Color(NSColor.windowBackgroundColor)))
     }
 }
 
@@ -75,8 +75,18 @@ struct LineChartView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        GeometryReader { geometry in
-            LineChartView(geometry: geometry, points: randomData())
+        Group {
+            GeometryReader { geometry in
+                LineChartView(geometry: geometry, points: randomData())
+            }
+            .previewDisplayName("Light mode")
+            .environment(\.colorScheme, .light)
+
+            GeometryReader { geometry in
+                LineChartView(geometry: geometry, points: randomData())
+            }
+            .previewDisplayName("Dark mode")
+            .environment(\.colorScheme, .dark)
         }
     }
 }

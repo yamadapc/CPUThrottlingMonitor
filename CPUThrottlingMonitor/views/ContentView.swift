@@ -14,17 +14,17 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ZStack {
-                HStack {
-                    Text("CPU Speed Limit:")
-                    Text("\(state.getCurrentValue())%")
-                        .bold()
-                }
                 GeometryReader { geometry in
                     LineChartView(
                         geometry: geometry,
                         points: self.state.getHistory()
                     )
                 }
+                HStack {
+                    Text("CPU Speed Limit:")
+                    Text("\(state.getCurrentValue())%")
+                        .bold()
+                }.foregroundColor(Color(NSColor.controlTextColor))
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
     }
@@ -33,8 +33,18 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(state: CPUThrottlingState(
-            speedLimits: (0..<100).map { _ in .random(in: 75...100) }
-        )).frame(width: 200.0, height: 150.0, alignment: .center)
+        Group {
+            ContentView(state: CPUThrottlingState(
+                speedLimits: (0..<100).map { _ in .random(in: 75...100) }
+            )).frame(width: 200.0, height: 150.0, alignment: .center)
+              .previewDisplayName("Light mode")
+            .environment(\.colorScheme, .light)
+
+            ContentView(state: CPUThrottlingState(
+                speedLimits: (0..<100).map { _ in .random(in: 75...100) }
+            )).frame(width: 200.0, height: 150.0, alignment: .center)
+              .previewDisplayName("Dark mode")
+            .environment(\.colorScheme, .dark)
+        }
     }
 }
