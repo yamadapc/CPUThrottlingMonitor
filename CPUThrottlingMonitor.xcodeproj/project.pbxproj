@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB51D0C9253D985000FD3588 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51D0C8253D985000FD3588 /* LineChartView.swift */; };
+		CB51D0CD253D9B7300FD3588 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = CB51D0CC253D9B7300FD3588 /* Logging */; };
 		CBBDED58253AB3D200804BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDED57253AB3D200804BAE /* AppDelegate.swift */; };
 		CBBDED5A253AB3D200804BAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDED59253AB3D200804BAE /* ContentView.swift */; };
 		CBBDED5C253AB3D900804BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBBDED5B253AB3D900804BAE /* Assets.xcassets */; };
@@ -17,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB51D0C8253D985000FD3588 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPUThrottlingMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBDED57253AB3D200804BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBBDED59253AB3D200804BAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB51D0CD253D9B7300FD3588 /* Logging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +67,7 @@
 				CBBDED6C253AB78900804BAE /* CPUThrottlingService.swift */,
 				CBBDED6A253AB41D00804BAE /* StatusBarController.swift */,
 				CBBDED59253AB3D200804BAE /* ContentView.swift */,
+				CB51D0C8253D985000FD3588 /* LineChartView.swift */,
 				CBBDED5B253AB3D900804BAE /* Assets.xcassets */,
 				CBBDED60253AB3D900804BAE /* Main.storyboard */,
 				CBBDED63253AB3D900804BAE /* Info.plist */,
@@ -97,6 +102,7 @@
 			);
 			name = CPUThrottlingMonitor;
 			packageProductDependencies = (
+				CB51D0CC253D9B7300FD3588 /* Logging */,
 			);
 			productName = CPUThrottlingMonitor;
 			productReference = CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */;
@@ -127,6 +133,7 @@
 			);
 			mainGroup = CBBDED4B253AB3D200804BAE;
 			packageReferences = (
+				CB51D0CB253D9B7300FD3588 /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = CBBDED55253AB3D200804BAE /* Products */;
 			projectDirPath = "";
@@ -156,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBBDED5A253AB3D200804BAE /* ContentView.swift in Sources */,
+				CB51D0C9253D985000FD3588 /* LineChartView.swift in Sources */,
 				CBBDED6D253AB78900804BAE /* CPUThrottlingService.swift in Sources */,
 				CBBDED6B253AB41D00804BAE /* StatusBarController.swift in Sources */,
 				CBBDED58253AB3D200804BAE /* AppDelegate.swift in Sources */,
@@ -357,6 +365,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CB51D0CB253D9B7300FD3588 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CB51D0CC253D9B7300FD3588 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB51D0CB253D9B7300FD3588 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBBDED4C253AB3D200804BAE /* Project object */;
 }

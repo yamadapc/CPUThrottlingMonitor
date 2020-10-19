@@ -8,8 +8,11 @@
 
 import Foundation
 import Cocoa
+import Logging
 
 class StatusBarController {
+    private static let logger = Logger(label: "com.beijaflor.StatusBarController")
+
     private let cpuThrottlingService: CPUThrottlingService
     private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
@@ -36,6 +39,7 @@ class StatusBarController {
 
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in
             if let statusBarButton = self.statusItem.button {
+                StatusBarController.logger.info("Updating status bar button title")
                 statusBarButton.title = String(format: "CTM %3d%%", cpuThrottlingService.getCurrentSpeedLimit())
             }
         })

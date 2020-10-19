@@ -8,6 +8,7 @@
 
 import Foundation
 import Cocoa
+import Logging
 
 class CPUThrottlingState: ObservableObject {
     @Published var speedLimits: [Int] = []
@@ -38,6 +39,8 @@ class CPUThrottlingState: ObservableObject {
 }
 
 class CPUThrottlingService {
+    private static let logger = Logger(label: "com.beijaflor.CPUThrottlingService")
+
     var state = CPUThrottlingState()
     var maxPoints = 120
 
@@ -58,7 +61,8 @@ class CPUThrottlingService {
     }
 
     func run() {
-        // print("Refreshing therm status")
+        CPUThrottlingService.logger.info("Refreshing CPU limit state")
+
         let task = Process()
         let pipe = Pipe()
         task.launchPath = "/usr/bin/pmset"
@@ -77,6 +81,8 @@ class CPUThrottlingService {
                 })?.split(separator: "=")[1]
                 .trimmingCharacters(in: CharacterSet.whitespaces)
             let speedLimitInt = Int(speedLimit ?? "100") ?? 100
+
+            CPUThrottlingService.logger.info("Current CPU limit is \(speedLimitInt)")
 
             state.speedLimits[state.currentPosition] = speedLimitInt
             state.currentPosition += 1
