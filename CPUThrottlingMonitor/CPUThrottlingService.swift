@@ -19,6 +19,10 @@ class CPUThrottlingState: ObservableObject {
         self.speedLimits = speedLimits
     }
 
+    func getCurrentValue() -> Int {
+        return speedLimits[currentPosition]
+    }
+
     func getHistory() -> [Int] {
         var history: [Int] = []
         if speedLimits.count == 0 {
