@@ -44,6 +44,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB51D0CF253D9C6F00FD3588 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				CB51D0C8253D985000FD3588 /* LineChartView.swift */,
+				CBBDED59253AB3D200804BAE /* ContentView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		CB51D0D0253D9C7E00FD3588 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CBBDED6A253AB41D00804BAE /* StatusBarController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		CB51D0D1253D9C8900FD3588 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				CBBDED6C253AB78900804BAE /* CPUThrottlingService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		CBBDED4B253AB3D200804BAE = {
 			isa = PBXGroup;
 			children = (
@@ -64,10 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				CBBDED57253AB3D200804BAE /* AppDelegate.swift */,
-				CBBDED6C253AB78900804BAE /* CPUThrottlingService.swift */,
-				CBBDED6A253AB41D00804BAE /* StatusBarController.swift */,
-				CBBDED59253AB3D200804BAE /* ContentView.swift */,
-				CB51D0C8253D985000FD3588 /* LineChartView.swift */,
+				CB51D0D1253D9C8900FD3588 /* services */,
+				CB51D0D0253D9C7E00FD3588 /* controllers */,
+				CB51D0CF253D9C6F00FD3588 /* views */,
 				CBBDED5B253AB3D900804BAE /* Assets.xcassets */,
 				CBBDED60253AB3D900804BAE /* Main.storyboard */,
 				CBBDED63253AB3D900804BAE /* Info.plist */,
