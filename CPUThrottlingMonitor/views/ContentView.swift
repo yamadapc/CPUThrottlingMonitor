@@ -20,6 +20,7 @@ struct ContentView: View {
                         points: self.state.getHistory()
                     )
                 }
+
                 HStack {
                     Text("CPU Speed Limit:")
                     Text("\(state.getCurrentValue())%")
@@ -38,7 +39,7 @@ struct ContentView_Previews: PreviewProvider {
                 speedLimits: (0..<100).map { _ in .random(in: 75...100) }
             )).frame(width: 200.0, height: 150.0, alignment: .center)
               .previewDisplayName("Light mode")
-            .environment(\.colorScheme, .light)
+              .environment(\.colorScheme, .light)
 
             ContentView(state: CPUThrottlingState(
                 speedLimits: (0..<100).map { _ in .random(in: 75...100) }

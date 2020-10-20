@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB200970253EC7A000576A8D /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20096F253EC7A000576A8D /* AnalyticsService.swift */; };
+		CB200974253EC9D900576A8D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CB200973253EC9D900576A8D /* Alamofire */; };
+		CB4CA404253E40630002D0F4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CA403253E40630002D0F4 /* SettingsView.swift */; };
 		CB51D0C9253D985000FD3588 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51D0C8253D985000FD3588 /* LineChartView.swift */; };
 		CB51D0CD253D9B7300FD3588 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = CB51D0CC253D9B7300FD3588 /* Logging */; };
 		CBBDED58253AB3D200804BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDED57253AB3D200804BAE /* AppDelegate.swift */; };
@@ -19,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB20096F253EC7A000576A8D /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		CB4CA403253E40630002D0F4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB51D0C8253D985000FD3588 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPUThrottlingMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBDED57253AB3D200804BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB51D0CD253D9B7300FD3588 /* Logging in Frameworks */,
+				CB200974253EC9D900576A8D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				CB51D0C8253D985000FD3588 /* LineChartView.swift */,
+				CB4CA403253E40630002D0F4 /* SettingsView.swift */,
 				CBBDED59253AB3D200804BAE /* ContentView.swift */,
 			);
 			path = views;
@@ -65,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				CBBDED6C253AB78900804BAE /* CPUThrottlingService.swift */,
+				CB20096F253EC7A000576A8D /* AnalyticsService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -127,6 +135,7 @@
 			name = CPUThrottlingMonitor;
 			packageProductDependencies = (
 				CB51D0CC253D9B7300FD3588 /* Logging */,
+				CB200973253EC9D900576A8D /* Alamofire */,
 			);
 			productName = CPUThrottlingMonitor;
 			productReference = CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */;
@@ -158,6 +167,7 @@
 			mainGroup = CBBDED4B253AB3D200804BAE;
 			packageReferences = (
 				CB51D0CB253D9B7300FD3588 /* XCRemoteSwiftPackageReference "swift-log" */,
+				CB200972253EC9D900576A8D /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = CBBDED55253AB3D200804BAE /* Products */;
 			projectDirPath = "";
@@ -189,7 +199,9 @@
 				CBBDED5A253AB3D200804BAE /* ContentView.swift in Sources */,
 				CB51D0C9253D985000FD3588 /* LineChartView.swift in Sources */,
 				CBBDED6D253AB78900804BAE /* CPUThrottlingService.swift in Sources */,
+				CB4CA404253E40630002D0F4 /* SettingsView.swift in Sources */,
 				CBBDED6B253AB41D00804BAE /* StatusBarController.swift in Sources */,
+				CB200970253EC7A000576A8D /* AnalyticsService.swift in Sources */,
 				CBBDED58253AB3D200804BAE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +403,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CB200972253EC9D900576A8D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
 		CB51D0CB253D9B7300FD3588 /* XCRemoteSwiftPackageReference "swift-log" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-log.git";
@@ -402,6 +422,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB200973253EC9D900576A8D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB200972253EC9D900576A8D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		CB51D0CC253D9B7300FD3588 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB51D0CB253D9B7300FD3588 /* XCRemoteSwiftPackageReference "swift-log" */;

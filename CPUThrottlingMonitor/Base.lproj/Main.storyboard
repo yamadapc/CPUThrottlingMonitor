@@ -55,6 +55,31 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Window" id="Np9-lV-sup">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="yvx-MA-WsX">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="UVw-bX-X7a">
+                                            <connections>
+                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="H8O-sg-qbF"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom" id="ZJg-rl-MQF">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="performZoom:" target="Ady-hI-5gd" id="tat-9a-Ord"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="E0z-Wb-xQL"/>
+                                        <menuItem title="Bring All to Front" id="u9o-y0-Vox">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="v9g-fR-3XV"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Help" id="wpr-3q-Mcd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
