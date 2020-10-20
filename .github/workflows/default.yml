@@ -1,4 +1,4 @@
-name: Swift
+name: Build and test
 
 on:
   push:
@@ -15,3 +15,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: xcodebuild -workspace ./CPUThrottlingMonitor.xcodeproj/project.xcworkspace -scheme CPUThrottlingMonitor -configuration Release -allowProvisioningUpdates
+    - name: Test
+      run: xcodebuild -workspace ./CPUThrottlingMonitor.xcodeproj/project.xcworkspace -scheme CPUThrottlingMonitor -configuration Release -allowProvisioningUpdates test

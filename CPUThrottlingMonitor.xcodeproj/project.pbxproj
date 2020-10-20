@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CB200970253EC7A000576A8D /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20096F253EC7A000576A8D /* AnalyticsService.swift */; };
 		CB200974253EC9D900576A8D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CB200973253EC9D900576A8D /* Alamofire */; };
+		CB20097F253F7DC100576A8D /* CPUThrottlingMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20097E253F7DC100576A8D /* CPUThrottlingMonitorTests.swift */; };
+		CB200990253F80A800576A8D /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB20098F253F80A800576A8D /* CircularBuffer.swift */; };
+		CB200998253F80F600576A8D /* CircularBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB200997253F80F600576A8D /* CircularBufferTests.swift */; };
 		CB4CA404253E40630002D0F4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CA403253E40630002D0F4 /* SettingsView.swift */; };
 		CB51D0C9253D985000FD3588 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51D0C8253D985000FD3588 /* LineChartView.swift */; };
 		CB51D0CD253D9B7300FD3588 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = CB51D0CC253D9B7300FD3588 /* Logging */; };
@@ -21,8 +24,23 @@
 		CBBDED6D253AB78900804BAE /* CPUThrottlingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDED6C253AB78900804BAE /* CPUThrottlingService.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CB200981253F7DC100576A8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBBDED4C253AB3D200804BAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBBDED53253AB3D200804BAE;
+			remoteInfo = CPUThrottlingMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		CB20096F253EC7A000576A8D /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		CB20097C253F7DC100576A8D /* CPUThrottlingMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CPUThrottlingMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB20097E253F7DC100576A8D /* CPUThrottlingMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUThrottlingMonitorTests.swift; sourceTree = "<group>"; };
+		CB200980253F7DC100576A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB20098F253F80A800576A8D /* CircularBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBuffer.swift; sourceTree = "<group>"; };
+		CB200997253F80F600576A8D /* CircularBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBufferTests.swift; sourceTree = "<group>"; };
 		CB4CA403253E40630002D0F4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB51D0C8253D985000FD3588 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPUThrottlingMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CB200979253F7DC100576A8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBBDED51253AB3D200804BAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -50,6 +75,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB20097D253F7DC100576A8D /* CPUThrottlingMonitorTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB20097E253F7DC100576A8D /* CPUThrottlingMonitorTests.swift */,
+				CB200995253F80E300576A8D /* services */,
+				CB200980253F7DC100576A8D /* Info.plist */,
+			);
+			path = CPUThrottlingMonitorTests;
+			sourceTree = "<group>";
+		};
+		CB20098E253F809F00576A8D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				CB20098F253F80A800576A8D /* CircularBuffer.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		CB200995253F80E300576A8D /* services */ = {
+			isa = PBXGroup;
+			children = (
+				CB200996253F80E900576A8D /* data */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		CB200996253F80E900576A8D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				CB200997253F80F600576A8D /* CircularBufferTests.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		CB51D0CF253D9C6F00FD3588 /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +132,7 @@
 			children = (
 				CBBDED6C253AB78900804BAE /* CPUThrottlingService.swift */,
 				CB20096F253EC7A000576A8D /* AnalyticsService.swift */,
+				CB20098E253F809F00576A8D /* data */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -81,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CBBDED56253AB3D200804BAE /* CPUThrottlingMonitor */,
+				CB20097D253F7DC100576A8D /* CPUThrottlingMonitorTests */,
 				CBBDED55253AB3D200804BAE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */,
+				CB20097C253F7DC100576A8D /* CPUThrottlingMonitorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +182,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CB20097B253F7DC100576A8D /* CPUThrottlingMonitorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB200983253F7DC100576A8D /* Build configuration list for PBXNativeTarget "CPUThrottlingMonitorTests" */;
+			buildPhases = (
+				CB200978253F7DC100576A8D /* Sources */,
+				CB200979253F7DC100576A8D /* Frameworks */,
+				CB20097A253F7DC100576A8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB200982253F7DC100576A8D /* PBXTargetDependency */,
+			);
+			name = CPUThrottlingMonitorTests;
+			productName = CPUThrottlingMonitorTests;
+			productReference = CB20097C253F7DC100576A8D /* CPUThrottlingMonitorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CBBDED53253AB3D200804BAE /* CPUThrottlingMonitor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBBDED67253AB3D900804BAE /* Build configuration list for PBXNativeTarget "CPUThrottlingMonitor" */;
@@ -147,10 +227,14 @@
 		CBBDED4C253AB3D200804BAE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1170;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = "Pedro Tacla Yamada";
 				TargetAttributes = {
+					CB20097B253F7DC100576A8D = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = CBBDED53253AB3D200804BAE;
+					};
 					CBBDED53253AB3D200804BAE = {
 						CreatedOnToolsVersion = 11.7;
 					};
@@ -174,11 +258,19 @@
 			projectRoot = "";
 			targets = (
 				CBBDED53253AB3D200804BAE /* CPUThrottlingMonitor */,
+				CB20097B253F7DC100576A8D /* CPUThrottlingMonitorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CB20097A253F7DC100576A8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBBDED52253AB3D200804BAE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,6 +284,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CB200978253F7DC100576A8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB200998253F80F600576A8D /* CircularBufferTests.swift in Sources */,
+				CB20097F253F7DC100576A8D /* CPUThrottlingMonitorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBBDED50253AB3D200804BAE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,11 +303,20 @@
 				CB4CA404253E40630002D0F4 /* SettingsView.swift in Sources */,
 				CBBDED6B253AB41D00804BAE /* StatusBarController.swift in Sources */,
 				CB200970253EC7A000576A8D /* AnalyticsService.swift in Sources */,
+				CB200990253F80A800576A8D /* CircularBuffer.swift in Sources */,
 				CBBDED58253AB3D200804BAE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB200982253F7DC100576A8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBBDED53253AB3D200804BAE /* CPUThrottlingMonitor */;
+			targetProxy = CB200981253F7DC100576A8D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CBBDED60253AB3D900804BAE /* Main.storyboard */ = {
@@ -220,6 +330,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CB200984253F7DC100576A8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Q39U2SBP6Z;
+				INFOPLIST_FILE = CPUThrottlingMonitorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "beijaflor-io.CPUThrottlingMonitorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CPUThrottlingMonitor.app/Contents/MacOS/CPUThrottlingMonitor";
+			};
+			name = Debug;
+		};
+		CB200985253F7DC100576A8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Q39U2SBP6Z;
+				INFOPLIST_FILE = CPUThrottlingMonitorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "beijaflor-io.CPUThrottlingMonitorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CPUThrottlingMonitor.app/Contents/MacOS/CPUThrottlingMonitor";
+			};
+			name = Release;
+		};
 		CBBDED65253AB3D900804BAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -384,6 +536,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CB200983253F7DC100576A8D /* Build configuration list for PBXNativeTarget "CPUThrottlingMonitorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB200984253F7DC100576A8D /* Debug */,
+				CB200985253F7DC100576A8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CBBDED4F253AB3D200804BAE /* Build configuration list for PBXProject "CPUThrottlingMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
