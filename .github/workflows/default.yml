@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: xcodebuild -workspace ./CPUThrottlingMonitor.xcodeproj/project.xcworkspace -scheme CPUThrottlingMonitor -configuration Release -allowProvisioningUpdates
+      run: xcodebuild -workspace ./CPUThrottlingMonitor.xcodeproj/project.xcworkspace -scheme CPUThrottlingMonitor -configuration Debug -allowProvisioningUpdates
     - name: Test
-      run: xcodebuild -workspace ./CPUThrottlingMonitor.xcodeproj/project.xcworkspace -scheme CPUThrottlingMonitor -configuration Release -allowProvisioningUpdates test
+      run: xcodebuild -workspace ./CPUThrottlingMonitor.xcodeproj/project.xcworkspace -scheme CPUThrottlingMonitor -configuration Debug -allowProvisioningUpdates test
