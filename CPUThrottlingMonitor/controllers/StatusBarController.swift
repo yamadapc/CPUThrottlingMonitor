@@ -59,10 +59,6 @@ class StatusBarController : NSObject, NSMenuDelegate {
                 statusBarButton.title = String(format: "CTM %3d%%", cpuThrottlingService.getCurrentSpeedLimit())
             }
         })
-
-        Timer.scheduledTimer(withTimeInterval: 120, repeats: true, block: { _ in
-            self.analyticsService.trackEvent(category: "track", action: "ping")
-        })
     }
 
     @objc func onClickSettings() {

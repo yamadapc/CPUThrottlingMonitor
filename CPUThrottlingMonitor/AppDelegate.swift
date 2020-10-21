@@ -26,7 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         analyticsService.trackEvent(category: "track", action: "startup")
 
         settingsWindowController = SettingsWindowController(analyticsService: analyticsService)
-
         statusBarController = StatusBarController(
             cpuThrottlingService: cpuThrottlingService,
             analyticsService: analyticsService,
@@ -37,6 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         analyticsSettingsAlertController.applicationDidFinishLaunching()
 
         NSApp.setActivationPolicy(.accessory)
+
+        Timer.scheduledTimer(withTimeInterval: 120, repeats: true, block: { _ in
+            self.analyticsService.trackEvent(category: "track", action: "ping")
+        })
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
