@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var settingsWindow: NSWindow? = nil
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        NSApp.setActivationPolicy(.accessory)
         cpuThrottlingService = CPUThrottlingService()
         cpuThrottlingService.start()
 
