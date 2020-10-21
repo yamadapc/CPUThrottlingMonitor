@@ -30,6 +30,7 @@ class SettingsWindowController: NSWindowController {
         guard let window = self.window else { return }
         window.center()
         window.makeKeyAndOrderFront(self)
+        NSApp.activate(ignoringOtherApps: true)
         window.orderFrontRegardless()
     }
 
