@@ -9,7 +9,13 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var isOn = !UserDefaults.standard.bool(forKey: "disableAnalytics")
+    var analyticsService: AnalyticsService
+
+    @State private var isOn: Bool = false
+
+    init(analyticsService: AnalyticsService) {
+        self.analyticsService = analyticsService
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -22,7 +28,7 @@ struct SettingsView: View {
                     Toggle(isOn: Binding(
                         get: { self.isOn },
                         set: { value in
-                            UserDefaults.standard.setValue(!value, forKey: "disableAnalytics")
+                            self.analyticsService.setIsEnabled(value)
                             self.isOn = value
                         }
                     ), label: {
@@ -33,12 +39,19 @@ struct SettingsView: View {
             .padding(10.0)
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
         }
+        .onAppear(perform: {
+            self.isOn = self.analyticsService.getIsEnabled()
+        })
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(
+            analyticsService: AnalyticsService(
+                options: AnalyticsServiceOptions(trackingId: "", clientId: "")
+            )
+        )
             .frame(width: 200.0, height: 100.0, alignment: .center)
     }
 }

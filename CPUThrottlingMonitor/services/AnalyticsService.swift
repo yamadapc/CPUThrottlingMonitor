@@ -21,10 +21,11 @@ class AnalyticsService {
 
     init(options: AnalyticsServiceOptions) {
         self.options = options
+        AnalyticsService.logger.info("Loaded: analyticsEnabled=\(getIsEnabled())")
     }
 
     func trackView(page: String, title: String) {
-        if UserDefaults.standard.bool(forKey: "disableAnalytics") {
+        if !getIsEnabled() {
             return
         }
         AnalyticsService.logger.info("Publishing analytics page=\(page) title=\(title)")
@@ -53,7 +54,7 @@ class AnalyticsService {
     }
 
     func trackEvent(category: String, action: String, label: String? = nil, value: String? = nil) {
-        if UserDefaults.standard.bool(forKey: "disableAnalytics") {
+        if !getIsEnabled() {
             return
         }
         AnalyticsService.logger.info("Publishing analytics category=\(category) action=\(action)")
@@ -85,6 +86,19 @@ class AnalyticsService {
             AnalyticsService.logger.debug("Published analytics and got response \(response.debugDescription)")
             AnalyticsService.logger.debug("Response body \(String(describing: String(data: response.data ?? Data(), encoding: .utf8)))")
         }
+    }
+
+    func getIsEnabled() -> Bool {
+        return !UserDefaults.standard.bool(forKey: "disableAnalytics")
+    }
+
+    func setIsEnabled(_ enabled: Bool) {
+        AnalyticsService.logger.info("Setting analytics settings enabled=\(enabled)")
+        UserDefaults.standard.setValue(!enabled, forKey: "disableAnalytics")
+    }
+
+    func hasSetIsEnabledBefore() -> Bool {
+        return UserDefaults.standard.value(forKey: "disableAnalytics") != nil
     }
 
     private func buildUrl() -> String {

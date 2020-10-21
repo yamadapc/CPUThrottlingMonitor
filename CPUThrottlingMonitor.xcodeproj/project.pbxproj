@@ -15,6 +15,9 @@
 		CB4CA404253E40630002D0F4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CA403253E40630002D0F4 /* SettingsView.swift */; };
 		CB51D0C9253D985000FD3588 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51D0C8253D985000FD3588 /* LineChartView.swift */; };
 		CB51D0CD253D9B7300FD3588 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = CB51D0CC253D9B7300FD3588 /* Logging */; };
+		CB9CD42E2540D1D1009525A3 /* AnalyticsSettingsAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CD42D2540D1D1009525A3 /* AnalyticsSettingsAlertController.swift */; };
+		CB9CD4332540D31A009525A3 /* LineChartMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CD4322540D31A009525A3 /* LineChartMenuItem.swift */; };
+		CB9CD4392540D4D7009525A3 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CD4382540D4D7009525A3 /* SettingsWindowController.swift */; };
 		CBBDED58253AB3D200804BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDED57253AB3D200804BAE /* AppDelegate.swift */; };
 		CBBDED5A253AB3D200804BAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDED59253AB3D200804BAE /* ContentView.swift */; };
 		CBBDED5C253AB3D900804BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBBDED5B253AB3D900804BAE /* Assets.xcassets */; };
@@ -43,6 +46,9 @@
 		CB200997253F80F600576A8D /* CircularBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBufferTests.swift; sourceTree = "<group>"; };
 		CB4CA403253E40630002D0F4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB51D0C8253D985000FD3588 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		CB9CD42D2540D1D1009525A3 /* AnalyticsSettingsAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSettingsAlertController.swift; sourceTree = "<group>"; };
+		CB9CD4322540D31A009525A3 /* LineChartMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartMenuItem.swift; sourceTree = "<group>"; };
+		CB9CD4382540D4D7009525A3 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		CBBDED54253AB3D200804BAE /* CPUThrottlingMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPUThrottlingMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBBDED57253AB3D200804BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBBDED59253AB3D200804BAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 		CB51D0CF253D9C6F00FD3588 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				CB9CD4312540D2F8009525A3 /* cocoa */,
 				CB51D0C8253D985000FD3588 /* LineChartView.swift */,
 				CB4CA403253E40630002D0F4 /* SettingsView.swift */,
 				CBBDED59253AB3D200804BAE /* ContentView.swift */,
@@ -123,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				CBBDED6A253AB41D00804BAE /* StatusBarController.swift */,
+				CB9CD42D2540D1D1009525A3 /* AnalyticsSettingsAlertController.swift */,
+				CB9CD4382540D4D7009525A3 /* SettingsWindowController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -135,6 +144,14 @@
 				CB20098E253F809F00576A8D /* data */,
 			);
 			path = services;
+			sourceTree = "<group>";
+		};
+		CB9CD4312540D2F8009525A3 /* cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				CB9CD4322540D31A009525A3 /* LineChartMenuItem.swift */,
+			);
+			path = cocoa;
 			sourceTree = "<group>";
 		};
 		CBBDED4B253AB3D200804BAE = {
@@ -302,8 +319,11 @@
 				CBBDED6D253AB78900804BAE /* CPUThrottlingService.swift in Sources */,
 				CB4CA404253E40630002D0F4 /* SettingsView.swift in Sources */,
 				CBBDED6B253AB41D00804BAE /* StatusBarController.swift in Sources */,
+				CB9CD4392540D4D7009525A3 /* SettingsWindowController.swift in Sources */,
 				CB200970253EC7A000576A8D /* AnalyticsService.swift in Sources */,
+				CB9CD42E2540D1D1009525A3 /* AnalyticsSettingsAlertController.swift in Sources */,
 				CB200990253F80A800576A8D /* CircularBuffer.swift in Sources */,
+				CB9CD4332540D31A009525A3 /* LineChartMenuItem.swift in Sources */,
 				CBBDED58253AB3D200804BAE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

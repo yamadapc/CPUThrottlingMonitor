@@ -11,89 +11,42 @@ import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var cpuThrottlingService: CPUThrottlingService!
-    var analyticsService: AnalyticsService!
-    var popover: NSMenu!
-    var statusBarController: StatusBarController!
-    var settingsWindow: NSWindow? = nil
+    private var cpuThrottlingService: CPUThrottlingService!
+    private var analyticsService: AnalyticsService!
+    private var analyticsSettingsAlertController: AnalyticsSettingsAlertController!
+    private var statusBarController: StatusBarController!
+    private var settingsWindowController: SettingsWindowController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        NSApp.setActivationPolicy(.accessory)
         cpuThrottlingService = CPUThrottlingService()
-        cpuThrottlingService.start()
+        analyticsService = AnalyticsService(options: getAnalyticsOptions())
+        analyticsSettingsAlertController = AnalyticsSettingsAlertController(analyticsService: analyticsService)
 
-        analyticsService = AnalyticsService(
-            options: AnalyticsServiceOptions(
-                trackingId: "UA-74188650-7",
-                clientId: abs(UUID().hashValue % 1000).description
-            )
-        )
+        cpuThrottlingService.start()
         analyticsService.trackEvent(category: "track", action: "startup")
 
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView(state: cpuThrottlingService.state)
-
-        let menuItem = NSMenuItem(title: "Custom", action: nil, keyEquivalent: "")
-        let hostingView = NSHostingView(rootView: contentView)
-        hostingView.frame = NSRect(
-            origin: CGPoint(),
-            size: CGSize(width: 250.0, height: 100.0)
-        )
-        menuItem.isEnabled = true
-        menuItem.view = hostingView
+        settingsWindowController = SettingsWindowController(analyticsService: analyticsService)
 
         statusBarController = StatusBarController(
             cpuThrottlingService: cpuThrottlingService,
             analyticsService: analyticsService,
-            contentItem: menuItem,
-            onClickSettingsCallback: {
-                self.analyticsService.trackView(page: "/settings", title: "SettingsPage")
-                self.onClickSettings()
-            }
+            contentItem: LineChartMenuItem(cpuThrottlingState: cpuThrottlingService.state),
+            onClickSettingsCallback: { self.settingsWindowController.onClickSettings() }
         )
 
-        if UserDefaults.standard.value(forKey: "disableAnalytics") == nil {
-            let alert = NSAlert()
-            alert.messageText = "Enable analytics?"
-            alert.informativeText = "Whether to send anonymous usage statistics to help us make this better. You can change this later."
-            alert.addButton(withTitle: "Yes")
-            alert.addButton(withTitle: "No")
-            let response = alert.runModal()
-            if response == .OK {
-                UserDefaults.standard.setValue(false, forKey: "disableAnalytics")
-            } else {
-                UserDefaults.standard.setValue(true, forKey: "disableAnalytics")
-            }
-        }
+        analyticsSettingsAlertController.applicationDidFinishLaunching()
+
+        NSApp.setActivationPolicy(.accessory)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
     }
 
-    func onClickSettings() {
-        if let w = settingsWindow {
-            w.makeKeyAndOrderFront(self)
-            return
-        }
-
-        let settingsView = SettingsView()
-        let hostingView = NSHostingView(rootView: settingsView)
-        let contentRect = NSRect(origin: CGPoint(), size: CGSize(width: 200.0, height: 100.0))
-        let window = NSWindow(
-            contentRect: contentRect,
-            styleMask: [.resizable, .titled, .closable, .miniaturizable],
-            backing: .buffered,
-            defer: false
+    private func getAnalyticsOptions() -> AnalyticsServiceOptions {
+        return AnalyticsServiceOptions(
+            trackingId: "UA-74188650-7",
+            clientId: abs(UUID().hashValue % 1000).description
         )
-        hostingView.frame = contentRect
-        window.contentView = hostingView
-        window.isReleasedWhenClosed = false
-        window.center()
-        window.makeKeyAndOrderFront(self)
-
-        settingsWindow = window
-
-        window.orderFrontRegardless()
     }
 }
 
