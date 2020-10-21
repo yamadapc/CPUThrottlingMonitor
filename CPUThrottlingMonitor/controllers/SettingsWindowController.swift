@@ -26,7 +26,10 @@ class SettingsWindowController: NSWindowController {
     func onClickSettings() {
         self.analyticsService.trackView(page: "/settings", title: "SettingsPage")
 
-        self.window = SettingsWindowController.makeWindow(analyticsService)
+        if self.window?.isVisible != true {
+            self.window?.close()
+            self.window = SettingsWindowController.makeWindow(analyticsService)
+        }
         guard let window = self.window else { return }
         window.center()
         window.makeKeyAndOrderFront(self)
